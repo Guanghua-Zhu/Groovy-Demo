@@ -1,7 +1,7 @@
-package com.aaron.Basic
+package com.aaron.BasicDemo
 
 /**
- * 语句结构
+ * Groovy 语句结构 示例
  */
 class StatementDemo {
     static void main(args) {
@@ -83,7 +83,8 @@ class StatementDemo {
      * switch 语句测试
      */
     static testSwitch() {
-        // Aaron todo
+        // Aaron: todo
+
     }
 
     static testFor() {
@@ -161,12 +162,5 @@ class StatementDemo {
             result += e
         }
         assert result == 9
-
     }
-
-
-
-
-
-
 }

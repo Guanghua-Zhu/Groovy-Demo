@@ -1,10 +1,9 @@
-package com.aaron.Basic
+package com.aaron.BasicDemo
 
 /**
- * 集合
+ * Groovy 集合 示例
  */
 class CollectionDemo {
-
     static void main(args) {
         testRange()
         testList()
@@ -71,8 +70,7 @@ class CollectionDemo {
         // 反向Range作为索引下标进行访问, 得到的结果列表也是反向的
         assert myList3[2..0] == ["C","Bob","Aaron"]
 
-
-
+        /********************** 类型指定 **********************/
         // 通过显式类型声明
         LinkedList myLinkedList1 = new LinkedList()
         assert myLinkedList1 instanceof LinkedList
@@ -85,8 +83,7 @@ class CollectionDemo {
         def myLinkedList3 = [] as LinkedList
         assert myLinkedList3 instanceof LinkedList
 
-
-        // 重载运算符
+        /********************** 重载运算符 **********************/
         def myList4 = [996]
         // 添加元素到列表
         myList4 += "Aaron"
@@ -103,5 +100,4 @@ class CollectionDemo {
         myList4 << "Bob" << 17
         assert myList4 == [false, "Bob", 17]
     }
-
 }
