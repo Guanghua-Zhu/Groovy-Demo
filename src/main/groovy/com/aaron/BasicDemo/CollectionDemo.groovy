@@ -10,6 +10,9 @@ class CollectionDemo {
 
     }
 
+    /**
+     * Range 范围测试
+     */
     static void testRange() {
         // range1: [0, 5]
         def range1 = 0..5
@@ -44,6 +47,9 @@ class CollectionDemo {
         assert range4.toList() == [4, 3, 2]
     }
 
+    /**
+     * List 列表测试
+     */
     static void testList() {
         def myList1 = [1,7,2]
         // List的默认实现类为ArrayList
