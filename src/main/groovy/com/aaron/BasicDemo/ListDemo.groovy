@@ -68,8 +68,6 @@ class ListDemo {
         // 向元素尾部追加元素
         myList4 << "Bob" << 17
         assert myList4 == [false, "Bob", 17]
-
-
     }
 
     /**

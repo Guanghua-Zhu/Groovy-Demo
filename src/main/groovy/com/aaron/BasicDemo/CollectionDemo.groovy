@@ -6,6 +6,7 @@ package com.aaron.BasicDemo
 class CollectionDemo {
     static void main(args) {
         testRange()
+        testArray()
     }
 
     /**
@@ -43,5 +44,29 @@ class CollectionDemo {
         // 反向范围
         def range4 = 4..<1
         assert range4.toList() == [4, 3, 2]
+    }
+
+    /**
+     * Array 数组测试
+     */
+    static void testArray() {
+        // 通过显式变量类型声明字符串数组
+        String[] array1 = ['Aaron','Tom']
+        assert array1 instanceof String[]
+        assert !(array1 instanceof List)
+        // 通过索引下标访问数组
+        assert array1[0] == 'Aaron'
+        // 与List类似，支持负数索引
+        assert array1[-1] == 'Tom'
+        // 通过索引下标修改元素
+        array1[1] = "Tony"
+        assert array1 == ['Aaron','Tony']
+
+        // 通过asas运算符强制类型为int数组
+        def array2 = [123,44,77] as int[]
+        assert array2 instanceof int[]
+        assert array2.size() == 3
+
+
     }
 }
