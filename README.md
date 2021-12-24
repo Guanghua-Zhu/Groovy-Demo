@@ -8,5 +8,9 @@ Groovy语言的使用示例
 ## Author
 Aaron Zhu, zghcivilization@163.com
 
+## Verson
+- JDK: 8
+- GDK: 3.0.9
+
 ## License
 MIT
