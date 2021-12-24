@@ -34,11 +34,6 @@ class HelloWorld {
         assert book.getTitle() == "d"
         assert book.title == "d"
 
-        // GString
-        def firstName = "Aaron"
-        def lastName = "Zhu"
-        assert "$firstName and $lastName" == "Aaron and Zhu"
-
         // Number
         def x = 1
         def y = 2
@@ -47,12 +42,6 @@ class HelloWorld {
         assert x instanceof Integer
 
         1.upto(3, num -> println("num: $num") )
-
-        // List
-        def numbers = ['', '1', "2", "3"]
-        assert numbers[2] == '2'
-        numbers[5] = '5'
-        assert numbers.size() == 6
 
         // Map
         def httpCode = [
