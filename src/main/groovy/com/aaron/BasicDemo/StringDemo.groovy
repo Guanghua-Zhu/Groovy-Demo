@@ -74,6 +74,20 @@ line 3"""
         // 如果含占位符, 则其是Groovy GString的实例
         assert str5b instanceof GString
         assert str5b == 'a1c'
+
+        // 此处实际上通过字符串强制转换为单个字符
+        char c1 = "A"
+        // 类似地对于字符类型, Groovy char 同样使用Java Character进行包装
+        assert c1 instanceof Character
+        // 此处实际上通过字符串强制转换为单个字符
+        Character c2 = "B"
+        assert c2 instanceof Character
+        // 通过as运算符强制类型
+        def c3 = "C" as char
+        assert c3 instanceof Character
+        // 通过toCharacter方法转换为字符
+        def c4 = "D".toCharacter()
+        assert c4 instanceof Character
     }
 }
 

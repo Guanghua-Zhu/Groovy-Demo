@@ -1,4 +1,4 @@
-package com.aaron.BasicDemo
+package com.aaron.BasicDemo.CollectionDemo
 
 /**
  * Groovy Range 示例
