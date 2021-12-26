@@ -62,11 +62,10 @@ class CollectionDemo {
         array1[1] = "Tony"
         assert array1 == ['Aaron','Tony']
 
-        // 通过asas运算符强制类型为int数组
+        // 通过as运算符强制类型为int数组
         def array2 = [123,44,77] as int[]
         assert array2 instanceof int[]
         assert array2.size() == 3
-
 
     }
 }

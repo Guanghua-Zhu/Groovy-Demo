@@ -33,6 +33,10 @@ class MapDemo {
         // Map中是否存在一个KV对满足闭包条件
         assert map1.any {entry -> entry.key=="Aaron"}
 
+        def result1 =  map1.find { entry -> entry.value>5 }
+        // 占位符完整语法为 ${}, 在不引起歧义的情况下可以直接使用 $
+        println ("result 1: $result1.key --->>> ${result1.value}")
+
         /********************** 类型指定 **********************/
         // 定义一个空Map, 通过as运算符强制类型为TreeMap
         def map2 = [:] as TreeMap
