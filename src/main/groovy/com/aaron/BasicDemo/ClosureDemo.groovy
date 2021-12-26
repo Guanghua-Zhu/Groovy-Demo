@@ -39,7 +39,7 @@ class ClosureDemo {
     }
 
     /**
-     * 调用闭包
+     * 直接调用闭包
      */
     static void call() {
         // 定义一个不需要参数的闭包
@@ -52,6 +52,9 @@ class ClosureDemo {
         // 定义一个需要两个参数的闭包
         def closure2 = { x, y -> x+y }
         assert closure2(1,3) == 4
-        assert closure2.call(2,7) == 9
+
+        // 闭包的参数类型是可选地
+        def closure3 = { String x, String y -> "${x}==${y}" }
+        assert closure3.call('2','7') == "2==7"
     }
 }
