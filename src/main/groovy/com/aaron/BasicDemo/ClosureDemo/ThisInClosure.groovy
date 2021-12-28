@@ -6,29 +6,30 @@ package com.aaron.BasicDemo.ClosureDemo
  */
 class ThisInClosure {
     static void main(String[] args) {
-        Employee employee1 = new Employee("Aaron", 18);
-        assert employee1.getInfo() == "[Employee Info]: <name> : Aaron, <age>: 18"
-        assert employee1.getInfo2() == "[Employee Info]: <name> : Aaron, <age>: 18"
+        Employee employee = new Employee("Aaron", 18)
+        assert employee.getInfo() == "[Employee Info]: <name> : Aaron, <age>: 18"
+        assert employee.getInfo2() == "[Employee Info]: <name> : Aaron, <age>: 18"
 
         /*************** 闭包定义在类中 ***************/
-        Closure closure1 = employee1.test1()
+        Closure closure1 = employee.test1()
         // 闭包中的this 指的是 闭包定义处所在类的相应实例
-        assert closure1.call() == employee1
+        assert closure1.call() == employee
+
+        Closure closure2 = employee.test2()
         // 闭包中的getThisObject()方法 作用于this类似
-        Closure closure2 = employee1.test2()
-        assert closure2.call() == employee1
+        assert closure2.call() == employee
 
         /*************** 闭包定义在内部类中 ***************/
-        Employee.Inner inner = employee1.getInnerInstance();
+        Employee.Inner inner = employee.getInnerInstance()
         Closure closure3 = inner.test3()
         // 闭包如果定义在内部类中, 则 闭包中的this 指的是 相应的内部类实例
-        assert closure3.call() != employee1
+        assert closure3.call() != employee
         assert closure3.call() == inner
 
         /*************** 闭包嵌套定义在另一个闭包中 ***************/
-        Closure closure4 = employee1.test4()
+        Closure closure4 = employee.test4()
         // 嵌套定义的闭包, 则 嵌套闭包中的this 指的依然是 嵌套闭包所在类的相应实例
-        assert closure4.call() == employee1
+        assert closure4.call() == employee
     }
 }
 

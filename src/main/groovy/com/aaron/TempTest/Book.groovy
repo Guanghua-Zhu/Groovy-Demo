@@ -31,7 +31,7 @@ class Book {
 
         Book book2 = new Book("Java Core")
 
-        Book book3 = book1 + book2;
+        Book book3 = book1 + book2
         println(book3.toString())
 
     }
