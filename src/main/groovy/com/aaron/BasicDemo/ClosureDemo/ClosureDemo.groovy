@@ -1,4 +1,4 @@
-package com.aaron.BasicDemo
+package com.aaron.BasicDemo.ClosureDemo
 
 import org.codehaus.groovy.runtime.MethodClosure
 
@@ -9,6 +9,7 @@ class ClosureDemo {
     static void main(String[] args) {
         define()
         call()
+        returnResult()
         methodClosure()
         other()
     }
@@ -66,6 +67,30 @@ class ClosureDemo {
         assert closure4.call( 4,7 ) == 28
         // 对于未给定的参数值, 闭包会使用缺省值
         assert closure4.call( 4) == 20
+    }
+
+    /**
+     * 闭包的返回结果
+     */
+    static void returnResult() {
+        def closure1 = { ->
+            def list = []
+            list.add("Bob")
+            list.add("Aaron")
+        }
+        def result1 = closure1.call()
+        // 闭包中未显式使用return语句, 返回最后一个表达式的结果, 即list.add方法的返回值
+        assert result1 == true
+
+        def closure2 = { ->
+            def list = []
+            list.add("Bob")
+            list.add("Aaron")
+            return list
+        }
+        def result2 = closure2.call()
+        // 闭包中显式使用return语句, 返回指定值
+        assert result2 == ["Bob", "Aaron"]
     }
 
     /**
