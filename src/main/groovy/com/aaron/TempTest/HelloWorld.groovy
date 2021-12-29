@@ -1,7 +1,5 @@
 package com.aaron.TempTest
 
-import com.aaron.TempTest.Book
-
 class HelloWorld {
     static void main(args) {
 
@@ -29,7 +27,7 @@ class HelloWorld {
 
         println("Hello World")
 
-        def book = new Book()
+        def book = new Book2()
         book.setTitle("d")
         assert book.getTitle() == "d"
         assert book.title == "d"
