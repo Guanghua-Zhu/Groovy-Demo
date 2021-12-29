@@ -38,7 +38,7 @@ class StatementDemo {
         }
         assert x == 2
 
-        // 条件中 not null 被处理为 true
+        // 条件中非空字符串 被处理为 true
         if ("Hello") {
             x = 1
         } else {
