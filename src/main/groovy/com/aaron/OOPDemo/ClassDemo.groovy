@@ -50,7 +50,8 @@ class Book{
     void setRemark(String remark) {
         this.remark = remark
     }
-/**
+
+    /**
      * 构造函数1
      * @param bookName
      * @param price
