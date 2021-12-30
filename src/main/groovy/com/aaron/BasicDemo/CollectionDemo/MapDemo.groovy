@@ -21,6 +21,7 @@ class MapDemo {
         assert map1.get("Tom", 996) == 996
         // 通过点操作符访问Value
         assert map1."Bob" == 18
+        assert map1.Bob == 18
 
         // 修改、添加操作类似
         map1["Aaron"] = 2
