@@ -197,7 +197,7 @@ class OperatorDemo {
         b2 = b2 ?: "Hi"
         assert b2 == "Hi"
 
-        // Elvis赋值 运算符, 其是对Elvis运算符对进一步简化, 省去了再次赋值操作
+        // Elvis赋值 运算符, 其是对Elvis运算符的进一步简化, 省去了再次赋值操作
         def c1 = "Hello World"
         c1 ?= "Hi"
         assert c1 == "Hello World"
