@@ -34,6 +34,7 @@ class ClassDemo {
 
 class Book{
     /************* 属性 *************/
+    // 对于属性, Groovy会自动生产相应的getter/setter方法
     String bookName
 
     double price

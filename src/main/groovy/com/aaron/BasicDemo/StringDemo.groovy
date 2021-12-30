@@ -88,6 +88,9 @@ line 3"""
         // 通过toCharacter方法转换为字符
         def c4 = "D".toCharacter()
         assert c4 instanceof Character
+        // 强制类型转换
+        def c5 = (char)'E'
+        assert c5 instanceof Character
     }
 }
 
