@@ -1,5 +1,9 @@
 package com.aaron.BasicDemo
 
+import org.codehaus.groovy.runtime.MethodClosure
+
+import java.util.stream.Collectors
+
 /**
  * Groovy 操作符示例
  */
@@ -11,6 +15,7 @@ class OperatorDemo {
         logical()
         bit()
         conditional()
+        object()
     }
 
     /**
@@ -211,7 +216,63 @@ class OperatorDemo {
      * 对象操作符
      */
     static void object() {
+        def person1 = new Person("remark": "领军人才")
+        // 通过.操作符访问字段
+        person1.name = "Aaron"
+        assert person1.name == "Aaron"
+        // 通过.操作符修改字段实际上是隐式调用setter方法
+        person1.age = 18
+        assert person1.age == 218
+        // 通过.操作符获取字段实际上是隐式调用getter方法
+        assert person1.remark == "<REMARK INFO>: 领军人才"
 
+        // 通过.@运算符可以实现直接访问字段, 而不是通过隐式调用getter、setter方法实现
+        assert person1.@remark == "领军人才"
+        person1.@age = 17
+        assert person1.age == 17
+
+        // 安全引用操作符
+        Person person2 = null
+        // 如果?.安全引用操作符的引用为null, 则不会调用方法, 而是直接返回null以避免NPE
+        assert person2?.getAge() == null
+        assert person1?.getAge() == 17
+
+        // 方法指针运算符
+        MethodClosure fun1 = person1.&getAge
+        // 方法指针的类型是闭包
+        assert fun1 instanceof Closure
+        assert fun1() == 17
+        assert fun1.call() == 17
+
+        // 方法指针同样支持多分派
+        def fun3 = person1.&test1
+        assert fun3.call("Bye") == "Aaron: Bye"
+        assert fun3.call(3) == "<17 + 3> -->> 20"
+
+        // 可通过new获取构造器的方法指针
+        def fun4 = Person.&new
+        Person person3 = fun4.call("name":"Bob")
+        assert person3.name == "Bob"
+
+        // 通过类先获取非静态方法的方法指针
+        def fun2 = String.&toUpperCase
+        // 在执行闭包时, 再传入该类的实例, 以作为方法的调用者
+        assert fun2.call("Hello") == "HELLO"
+        def fun5 = Person.&test1
+        assert fun5.call( person1, "welcome" ) == "Aaron: welcome"
+
+        // 方法指针运算符同样适用于静态方法
+        def fun6 = String.&valueOf
+        assert fun6.call( false ) == "false"
+        assert fun6.call( 996 ) == "996"
+
+        // Groovy对Java 8的::方法引用运算符保持支持兼容
+        def list1 = ["71","2","4"].stream()
+            .map( Integer::valueOf )
+            .collect( Collectors.toList() )
+        assert list1 == [71,2,4]
+
+        println "gg"
     }
 
     static void special() {
@@ -226,3 +287,42 @@ class OperatorDemo {
     }
 }
 
+class Person {
+    String name
+    Integer age
+    String remark
+
+    void setAge(Integer age) {
+        this.age = 200 + age
+    }
+
+    String getRemark() {
+        return "<REMARK INFO>: $remark"
+    }
+
+    /**
+     * 实现equals方法, 实现重载==运算符
+     * @param other
+     * @return
+     */
+    @Override
+    boolean equals(Object other) {
+        if (!other
+            || !(other instanceof Person)
+            || name != other.name
+            || age != other.age
+            || remark != other.remark ) {
+            return  false
+        }
+        return true
+    }
+
+    String test1(String msg) {
+        return "$name: $msg"
+    }
+
+    String test1(Integer num) {
+        return "<${this.age} + ${num}> -->> ${this.age+num}"
+    }
+
+}
