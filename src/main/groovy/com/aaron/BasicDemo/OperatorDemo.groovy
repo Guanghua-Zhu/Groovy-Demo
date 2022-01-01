@@ -2,6 +2,8 @@ package com.aaron.BasicDemo
 
 import org.codehaus.groovy.runtime.MethodClosure
 
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 import java.util.stream.Collectors
 
 /**
@@ -16,6 +18,7 @@ class OperatorDemo {
         bit()
         conditional()
         object()
+        regular()
     }
 
     /**
@@ -232,7 +235,7 @@ class OperatorDemo {
         assert person1.age == 17
 
         // 安全引用操作符
-        Person person2 = null
+        com.aaron.BasicDemo.ClosureDemo.Person person2 = null
         // 如果?.安全引用操作符的引用为null, 则不会调用方法, 而是直接返回null以避免NPE
         assert person2?.getAge() == null
         assert person1?.getAge() == 17
@@ -271,8 +274,36 @@ class OperatorDemo {
             .map( Integer::valueOf )
             .collect( Collectors.toList() )
         assert list1 == [71,2,4]
+    }
 
-        println "gg"
+    /**
+     * 正则操作符
+     */
+    static void regular() {
+        String regex = /\S+\s+\S+/
+        // 模式操作符 ~
+        def pattern1 = ~regex
+        assert pattern1 instanceof Pattern
+        def text1 = "One Two Three Four Five"
+        def matcher1 = pattern1.matcher(text1)
+        assert matcher1 instanceof Matcher
+        assert matcher1.size() == 2
+        assert matcher1[0] == "One Two"
+        assert matcher1[1] == "Three Four"
+
+        // 查找运算符 =~
+        // 具体地，其会在文本text1上应用正则表达式regex, 生成matcher
+        def matcher2 = (text1 =~ regex)
+        assert matcher2 instanceof Matcher
+        assert matcher2.size() == 2
+        assert matcher2[0] == "One Two"
+        assert matcher2[1] == "Three Four"
+
+        // 匹配运算符 ==~, 其是完整的匹配, 而非部分匹配
+        boolean b1 = "One Two Three Four" ==~ regex
+        boolean b2 = "One Two" ==~ regex
+        assert b1 == false
+        assert b2 == true
     }
 
     static void special() {
