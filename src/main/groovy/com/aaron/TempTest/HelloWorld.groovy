@@ -1,5 +1,6 @@
 package com.aaron.TempTest
 
+
 class HelloWorld {
     static void main(args) {
 
@@ -24,13 +25,7 @@ class HelloWorld {
         def num2 = 2.2f
         def num3 = 2.2d
 
-
         println("Hello World")
-
-        def book = new Book2()
-        book.setTitle("d")
-        assert book.getTitle() == "d"
-        assert book.title == "d"
 
         // Number
         def x = 1

@@ -16,6 +16,7 @@ class OperatorDemo {
         bit()
         conditional()
         object()
+        compareByObj()
     }
 
     /**
@@ -271,19 +272,25 @@ class OperatorDemo {
             .map( Integer::valueOf )
             .collect( Collectors.toList() )
         assert list1 == [71,2,4]
-
-        println "gg"
     }
 
-    static void special() {
+    static void compareByObj() {
         // list1a, list1b 引用地址相同
         def list1a = [1,2] as LinkedList
         def list1b = list1a
         def list2 = [1,2] as LinkedList
-        // 两个对象的引用相同
+        // 两个引用的地址相同
         assert list1a === list1a
-        // 两个对象的引用不同
+        // 两个引用的地址不同
         assert list1a !== list2
+
+        // == 运算符所对应的方法是equals
+        // 负责比较两个引用的内容是否相同
+        assert list1a == list2
+        assert list1a.equals( list2 )
+        // 类似地, !=运算符是对equals方法的结果进行否定
+        assert list1a != [985,211]
+        assert !list1a.equals( [985,211] )
     }
 }
 
