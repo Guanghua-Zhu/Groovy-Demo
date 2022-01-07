@@ -2,6 +2,8 @@ package com.aaron.BasicDemo
 
 import org.codehaus.groovy.runtime.MethodClosure
 
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 import java.util.stream.Collectors
 
 /**
@@ -17,6 +19,8 @@ class OperatorDemo {
         conditional()
         object()
         compareByObj()
+        regular()
+        other()
     }
 
     /**
@@ -272,17 +276,91 @@ class OperatorDemo {
             .map( Integer::valueOf )
             .collect( Collectors.toList() )
         assert list1 == [71,2,4]
-    }
 
-    static void compareByObj() {
         // list1a, list1b 引用地址相同
         def list1a = [1,2] as LinkedList
         def list1b = list1a
+        // 另外一个包含相同元素的列表
         def list2 = [1,2] as LinkedList
+        // 判定内容是否相同
+        assert list1a == list1b
+        assert list1a == list2
+        // 两个对象的引用相同
+        assert list1a === list1b
+        // 两个对象的引用不同
         // 两个引用的地址相同
         assert list1a === list1a
         // 两个引用的地址不同
         assert list1a !== list2
+        // 等价于通过is方法判断两个对象的引用地址是否相同
+        assert list1a.is(list1b)
+        // 两个对象的引用不同
+        assert !(list1a.is(list2))
+    }
+
+    /**
+     * 正则操作符
+     */
+    static void regular() {
+        String regex = /\S+\s+\S+/
+        // 模式操作符 ~
+        def pattern1 = ~regex
+        assert pattern1 instanceof Pattern
+        def text1 = "One Two Three Four Five"
+        def matcher1 = pattern1.matcher(text1)
+        assert matcher1 instanceof Matcher
+        assert matcher1.size() == 2
+        assert matcher1[0] == "One Two"
+        assert matcher1[1] == "Three Four"
+
+        // 查找运算符 =~
+        // 具体地，其会在文本text1上应用正则表达式regex, 生成matcher
+        def matcher2 = (text1 =~ regex)
+        assert matcher2 instanceof Matcher
+        assert matcher2.size() == 2
+        assert matcher2[0] == "One Two"
+        assert matcher2[1] == "Three Four"
+
+        // 匹配运算符 ==~, 其是完整的匹配, 而非部分匹配
+        boolean b1 = "One Two Three Four" ==~ regex
+        boolean b2 = "One Two" ==~ regex
+        assert b1 == false
+        assert b2 == true
+    }
+
+    static void other() {
+        // 飞船运算符, 通过调用Comparable接口的compareTo方法进行比较
+        // 15==15
+        assert (15 <=> 15) == 0
+        // 44>22
+        assert (44 <=> 22) == 1
+        // 22<44
+        assert (22 <=> 44) == -1
+
+        // 安全索引运算符?[], 作用类似于?.安全引用操作符
+        // 避免由于数组、Map等为null而导致的NPE
+        String[] array1 = ["Amy", "Aaron"]
+        array1?[1] = "Bob"
+        assert array1?[0] == "Amy"
+        assert array1?[1] == "Bob"
+        array1 = null
+        // array1为null, 将不会应用索而是直接返回null
+        assert array1?[0] == null
+
+        // 安全索引运算符同样适用于map
+        def map1 = [:]
+        map1?["Aaron"] = 18
+        assert map1?["Aaron"] == 18
+        map1 = null
+        assert map1?["Aaron"] == null
+
+        // 成员操作符
+        def list1 = ["MicroSoft", "Apple", "Xiaomi", "FaceBook"]
+        // 判定Apple是否是list1的成员
+        assert "Apple" in list1
+        // 等效于调用isCase方法
+        assert list1.isCase( "Apple" )
+        assert !("Huawei" in list1)
 
         // == 运算符所对应的方法是equals
         // 负责比较两个引用的内容是否相同

@@ -8,6 +8,8 @@ class RangeDemo {
         // range1: [0, 5]
         def range1 = 0..5
         assert range1 instanceof Range
+        // Range实现了List接口
+        assert range1 instanceof List
         // contains: 检测某个元素是否存在于范围中
         assert range1.contains(0)
         assert range1.contains(3)
