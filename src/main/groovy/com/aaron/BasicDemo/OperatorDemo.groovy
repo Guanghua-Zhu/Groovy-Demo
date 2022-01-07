@@ -1,7 +1,6 @@
 package com.aaron.BasicDemo
 
 import org.codehaus.groovy.runtime.MethodClosure
-
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 import java.util.stream.Collectors
@@ -18,7 +17,6 @@ class OperatorDemo {
         bit()
         conditional()
         object()
-        compareByObj()
         regular()
         other()
     }
@@ -282,20 +280,25 @@ class OperatorDemo {
         def list1b = list1a
         // 另外一个包含相同元素的列表
         def list2 = [1,2] as LinkedList
-        // 判定内容是否相同
-        assert list1a == list1b
+
+        // 判断两个引用的内容是否相同
+        // == 运算符所对应的方法是equals
         assert list1a == list2
-        // 两个对象的引用相同
-        assert list1a === list1b
-        // 两个对象的引用不同
-        // 两个引用的地址相同
+        assert list1a.equals( list2 )
+
+        // 判断两个引用的内容是否不同
+        // 类似地, !=运算符是对equals方法的结果进行否定
+        assert list1a != [985,211]
+        assert !( list1a.equals([985,211]) )
+
+        // 判断两个引用的地址是否相同
+        // ===运算符对应is方法
         assert list1a === list1a
-        // 两个引用的地址不同
-        assert list1a !== list2
-        // 等价于通过is方法判断两个对象的引用地址是否相同
         assert list1a.is(list1b)
-        // 两个对象的引用不同
-        assert !(list1a.is(list2))
+        // 判断两个对象的引用地址是否不同
+        // 类似地, !==运算符是对is方法的结果进行否定
+        assert list1a !== list2
+        assert !( list1a.is(list2) )
     }
 
     /**
@@ -361,14 +364,6 @@ class OperatorDemo {
         // 等效于调用isCase方法
         assert list1.isCase( "Apple" )
         assert !("Huawei" in list1)
-
-        // == 运算符所对应的方法是equals
-        // 负责比较两个引用的内容是否相同
-        assert list1a == list2
-        assert list1a.equals( list2 )
-        // 类似地, !=运算符是对equals方法的结果进行否定
-        assert list1a != [985,211]
-        assert !list1a.equals( [985,211] )
     }
 }
 
