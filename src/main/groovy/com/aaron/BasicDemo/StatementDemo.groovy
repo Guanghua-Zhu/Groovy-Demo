@@ -8,7 +8,8 @@ class StatementDemo {
         testIf()
         testWhile()
         testFor()
-
+        testSwitch1()
+        testSwitch2()
     }
 
     /**
@@ -77,14 +78,6 @@ class StatementDemo {
             count--
         }while (count>1)
         assert fact == 24
-    }
-
-    /**
-     * switch 语句测试
-     */
-    static testSwitch() {
-        // Aaron: todo
-
     }
 
     static testFor() {
@@ -163,4 +156,62 @@ class StatementDemo {
         }
         assert result == 9
     }
+
+    /**
+     * switch 语句测试
+     */
+    static testSwitch1() {
+        // 普通的switch语句
+        def result = ""
+        def num = 3
+        switch (num) {
+            case 0: result += "A"
+            case 1: {
+                result += "B"
+                break
+            }
+            case 2: result += "C"
+            case 3: result += "D"
+            case 4: {
+                result += "E"
+                break
+            }
+            case 5: result += "F"
+            default: result += "Z"
+        }
+        assert result == "DE"
+    }
+
+    /**
+     * switch 语句测试
+     */
+    static testSwitch2() {
+        Closure closure1 = { num ->
+            def result = "Z"
+            switch (num) {
+                case -1 : result = "A"; break
+                // 通过Range的isCase方法, 相当于 (1..<2).isCase(num)
+                case 1..<2 : result = "B"; break
+                // 调用Range的isCase方法, 相当于 (1..<2).isCase(num)
+                case 2..4 : result = "C"; break
+                // 调用闭包的isCase方法, 相当于 {it%5==0}.isCase(num)
+                case {it%5==0} : result = "D"; break
+                // 调用列表的isCase方法, 相当于 [11,31].isCase(num)
+                case [11,31] : result = "E"; break
+                // 调用Integer的isCase方法, 相当于 Integer.isCase(num)
+                case Integer: result = "F"; break
+
+            }
+            return result
+        }
+
+        assert closure1(-1) == "A"
+        assert closure1(1) == "B"
+        assert closure1(2) == "C"
+        assert closure1(5) == "D"
+        assert closure1(10) == "D"
+        assert closure1(31) == "E"
+        assert closure1(996) == "F"
+    }
+
 }

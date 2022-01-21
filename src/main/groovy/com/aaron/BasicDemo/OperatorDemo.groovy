@@ -364,6 +364,14 @@ class OperatorDemo {
         // 等效于调用isCase方法
         assert list1.isCase( "Apple" )
         assert !("Huawei" in list1)
+
+        assert 996 in Integer
+        // 等效于调用isCase方法
+        assert Integer.isCase(996)
+        assert !(3.14f in Integer)
+
+        assert 3.14f in Float
+        assert Float.isCase( 3.1f )
     }
 }
 

@@ -8,6 +8,7 @@ class ListDemo {
         basic()
         likeStack()
         other()
+        testGrep()
     }
 
     /**
@@ -149,5 +150,35 @@ class ListDemo {
         // 更优雅地拼接
         def str3 = list6.join("~")
         assert str3 == "Aaron~Tina~Bob"
+    }
+
+    /**
+     * Grep过滤器
+     * @apinote 集合类均支持grep过滤器
+     */
+    static void testGrep() {
+        def list1 = [1,5,"Aaron",4,"Bob",25]
+
+        // 调用Integer的isCase方法
+        def list2 = list1.grep( Integer )
+        assert list2 == [1,5,4,25]
+
+        // 调用String的isCase方法
+        def list3 = list1.grep( String )
+        assert list3 == ["Aaron", "Bob"]
+
+        // 调用Range的isCase方法
+        def list4 = list1.grep( 0..<5 )
+        assert list4 == [1,4]
+
+        def closure1 = { e ->
+            if( e instanceof Integer && e%5==0) {
+                return true
+            }
+            return false
+        }
+        // 调用闭包的isCase方法
+        def list5 = list1.grep( closure1 )
+        assert list5 == [5,25]
     }
 }
