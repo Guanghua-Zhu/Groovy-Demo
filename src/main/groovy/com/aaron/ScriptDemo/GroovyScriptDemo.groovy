@@ -1,4 +1,4 @@
-package com.aaron
+package com.aaron.ScriptDemo
 
 println("Hello, This is a Groovy Script")
 
