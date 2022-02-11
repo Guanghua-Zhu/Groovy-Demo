@@ -65,6 +65,8 @@ class TruthDemo {
         // 零 表示 假
         assert !0
         assert !0g
+        assert !0.0f
+        assert !0.0d
 
         /***************** 引用 *************/
         def obj = new Object()
