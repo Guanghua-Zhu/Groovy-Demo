@@ -4,6 +4,7 @@ import groovy.test.AllTestSuite
 import junit.textui.TestRunner
 
 // Groovy 测试套件示例2
+// Aaron: todo: output 2 blog
 
 // 单元测试类的路径匹配表达式
 String basedir = "."

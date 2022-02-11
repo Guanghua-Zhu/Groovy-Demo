@@ -3,6 +3,7 @@ package com.aaron.BasicDemo.CollectionDemo
 /**
  * Groovy Map 示例
  */
+// Aaron: todo: output 2 blog
 class MapDemo {
     static void main(String[] args) {
         basic()

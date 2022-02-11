@@ -6,6 +6,7 @@ import groovy.lang.Closure;
  * Groovy 闭包柯里化 示例
  * @date 2022/1/17
  */
+// Aaron: todo: output 2 blog
 class CurryingDemo {
 
     static void main(String[] args) {

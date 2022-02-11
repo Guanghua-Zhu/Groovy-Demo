@@ -5,6 +5,7 @@ import junit.framework.TestSuite
 import junit.textui.TestRunner
 
 // Groovy 测试套件示例1
+// Aaron: todo: output 2 blog
 
 def testSuite = new TestSuite()
 def groovyTestSuite = new GroovyTestSuite()

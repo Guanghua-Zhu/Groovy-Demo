@@ -3,6 +3,7 @@ package com.aaron.BasicDemo
 /**
  * Groovy 数字 示例
  */
+// Aaron: todo: output 2 blog
 class NumberDemo {
     static void main(String[] args) {
         testType1()

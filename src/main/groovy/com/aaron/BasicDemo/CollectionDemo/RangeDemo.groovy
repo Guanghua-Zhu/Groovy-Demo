@@ -3,6 +3,7 @@ package com.aaron.BasicDemo.CollectionDemo
 /**
  * Groovy Range 示例
  */
+// Aaron: todo: output 2 blog
 class RangeDemo {
     static void main(args) {
         // range1: [0, 5]

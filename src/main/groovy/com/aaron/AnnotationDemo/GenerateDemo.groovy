@@ -6,6 +6,7 @@ import groovy.transform.builder.Builder
 /**
  * Groovy 生成代码注解 示例
  */
+// Aaron: todo: output 2 blog
 class GenerateDemo {
     static void main(String[] args) {
         test1()

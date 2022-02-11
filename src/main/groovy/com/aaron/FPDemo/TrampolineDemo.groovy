@@ -3,6 +3,7 @@ package com.aaron.FPDemo
 /**
  * Groovy 蹦床 示例
  */
+// Aaron: todo: output 2 blog
 class TrampolineDemo {
 
     static void main(String[] args) {

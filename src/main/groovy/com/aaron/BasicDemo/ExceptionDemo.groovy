@@ -3,6 +3,7 @@ package com.aaron.BasicDemo
 /**
  * Groovy 异常 示例
  */
+// Aaron: todo: output 2 blog
 class ExceptionDemo {
     static void main(String[] args) {
         def result1 = test1("Java 8 In Action")

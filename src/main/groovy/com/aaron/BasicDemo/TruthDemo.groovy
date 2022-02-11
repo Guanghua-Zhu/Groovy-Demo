@@ -3,6 +3,7 @@ package com.aaron.BasicDemo
 /**
  * Groovy 判定表达式真/假 示例
  */
+// Aaron: todo: output 2 blog
 class TruthDemo {
     static void main(String[] args){
         /************ 布尔表达式 ************/

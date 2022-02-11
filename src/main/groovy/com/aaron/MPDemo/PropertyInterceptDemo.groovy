@@ -5,6 +5,7 @@ package com.aaron.MPDemo
  * @author Aaron Zhu
  * @date 2022-01-23
  */
+// Aaron: todo: output 2 blog
 class PropertyInterceptDemo {
     static void main(String[] args){
         testType()

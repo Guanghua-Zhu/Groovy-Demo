@@ -3,6 +3,7 @@ package com.aaron.BasicDemo
 /**
  * Groovy 字符串 示例
  */
+// Aaron: todo: output 2 blog
 class StringDemo {
     static void main(args) {
         def x = 1

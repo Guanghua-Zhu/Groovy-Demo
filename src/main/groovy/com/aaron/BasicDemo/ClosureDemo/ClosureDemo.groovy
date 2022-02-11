@@ -5,6 +5,7 @@ import org.codehaus.groovy.runtime.MethodClosure
 /**
  * Groovy 闭包 示例
  */
+// Aaron: todo: output 2 blog
 class ClosureDemo {
     static void main(String[] args) {
         define()

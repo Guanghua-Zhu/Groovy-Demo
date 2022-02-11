@@ -3,6 +3,7 @@ package com.aaron.BasicDemo.CollectionDemo
 /**
  * Groovy Array 示例
  */
+// Aaron: todo: output 2 blog
 class ArrayDemo {
     static void main() {
         // 通过显式变量类型声明字符串数组

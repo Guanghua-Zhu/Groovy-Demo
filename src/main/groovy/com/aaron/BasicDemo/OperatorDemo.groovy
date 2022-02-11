@@ -8,6 +8,7 @@ import java.util.stream.Collectors
 /**
  * Groovy 操作符示例
  */
+// Aaron: todo: output 2 blog
 class OperatorDemo {
 
     static void main(String[] args){
@@ -286,7 +287,7 @@ class OperatorDemo {
         assert list1a == list2
         assert list1a.equals( list2 )
 
-        // 判断两个引用的内容是否不同
+
         // 类似地, !=运算符是对equals方法的结果进行否定
         assert list1a != [985,211]
         assert !( list1a.equals([985,211]) )

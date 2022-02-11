@@ -10,6 +10,8 @@ import org.junit.Test
  * @author Aaron Zhu
  * @date 2022-02-09
  */
+// Aaron: todo: output 2 blog
+
 class HelloWorldTest1 extends GroovyTestCase{
     //直接继承GroovyTestCase, 且方法名需要以test开头
     void testHello() {

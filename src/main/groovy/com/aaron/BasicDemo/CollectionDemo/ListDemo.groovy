@@ -3,6 +3,7 @@ package com.aaron.BasicDemo.CollectionDemo
 /**
  * Groovy 列表 示例
  */
+// Aaron: todo: output 2 blog
 class ListDemo {
     static void main(args) {
         basic()

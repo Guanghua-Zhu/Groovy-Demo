@@ -3,6 +3,7 @@ package com.aaron.FPDemo
 /**
  * Groovy 闭包组合 示例
  */
+// Aaron: todo: output 2 blog
 class CompositionDemo {
     static void main(String[] args) {
 
