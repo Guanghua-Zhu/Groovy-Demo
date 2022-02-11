@@ -3,7 +3,6 @@ package com.aaron.BasicDemo
 /**
  * Groovy 数字 示例
  */
-// Aaron: todo: output 2 blog
 class NumberDemo {
     static void main(String[] args) {
         testType1()
@@ -56,7 +55,7 @@ class NumberDemo {
     }
 
     static void testType2() {
-        // 整型默认类型
+        // 整型默认类型为Integer
         def num1 = 15
         assert num1 instanceof Integer
 
@@ -116,7 +115,6 @@ class NumberDemo {
         assert msg4 == "543210-1-2"
 
         def msg5 = ""
-        def num2 = 0.1f
         // 从0.1按0.2的步长增长到1.1, 但不包括1.1
         0.1.step(1.1, 0.2) { num -> msg5 += "H$num, " }
         assert msg5 == "H0.1, H0.3, H0.5, H0.7, H0.9, "

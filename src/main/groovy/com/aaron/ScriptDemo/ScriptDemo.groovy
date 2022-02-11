@@ -10,11 +10,11 @@ assert calc("other", 3,7) == -4
 
 // 脚本内直接定义方法
 def calc(String type, def num1, def num2) {
-    if(type=="plus") {
-        return num1 + num2
-    } else if(type=='mul') {
-        return num1 * num2
-    } else {
-        return num1 - num2
-    }
+	if(type=="plus") {
+		return num1 + num2
+	} else if(type=='mul') {
+		return num1 * num2
+	} else {
+		return num1 - num2
+	}
 }
