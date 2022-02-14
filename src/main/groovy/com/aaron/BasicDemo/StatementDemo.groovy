@@ -3,7 +3,6 @@ package com.aaron.BasicDemo
 /**
  * Groovy 语句结构 示例
  */
-// Aaron: todo: output 2 blog
 class StatementDemo {
     static void main(args) {
         testIf()
@@ -82,7 +81,7 @@ class StatementDemo {
     }
 
     static testFor() {
-        /************* 经典 for 循环 *************/
+        /************* 传统 for 循环 *************/
         def msg = ""
         for(int i=1; i<=5; i++) {
             msg += i
@@ -96,7 +95,7 @@ class StatementDemo {
         }
         assert str == "Hello 42, Hellp 43, Hellq 44, "
 
-        /************* for in 迭代容器 *************/
+        /************* for in 迭代集合容器 *************/
         // for in 迭代 List
         def list = [1,3,5]
         def x = 0
@@ -150,7 +149,7 @@ class StatementDemo {
         // for each 迭代 List
         def list3 = [1,3,5]
         def result = 0
-        // 使用foe each循环需要指定e变量的类型,
+        // 使用for each循环需要指定e变量的类型
         // 这里可以使用int, 也可以直接使用def
         for(def e : list3) {
             result += e

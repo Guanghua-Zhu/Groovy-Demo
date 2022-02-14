@@ -3,13 +3,12 @@ package com.aaron.BasicDemo
 /**
  * Groovy 异常 示例
  */
-// Aaron: todo: output 2 blog
 class ExceptionDemo {
     static void main(String[] args) {
         def result1 = test1("Java 8 In Action")
         assert result1 =="JAVA 8 IN ACTION"
 
-        /*********************** 支持传统的try/catch/finally语句 ***********************/
+        /*********************** 支持传统的try/catch语句 ***********************/
         try {
             test1("Groovy In Action")
         } catch (e) {   // 如果期望捕获所有类型的异常, 异常类型可省略
@@ -17,6 +16,7 @@ class ExceptionDemo {
             assert e.getMessage() == "文件不存在异常"
         }
 
+        /*********************** 支持传统的try/catch/finally语句 ***********************/
         def result2 = -1
         try{
             test2(null)
@@ -36,7 +36,12 @@ class ExceptionDemo {
         }
     }
 
-    // Groovy直接抛出CheckedException受查异常, 而在方法签名处的抛出异常声明则是可选的
+    /**
+     * Groovy 方法抛出受查异常
+     * Note: Groovy直接抛出CheckedException受查异常时, 而在方法签名处的抛出异常声明则是可选的
+     * @param fileName
+     * @return
+     */
     // 故推荐在方法签名处显式添加声明: static def test1 (String fileName) throws FileNotFoundException
     static def test1 (String fileName) {
         if( fileName == "Groovy In Action" ) {
@@ -45,6 +50,11 @@ class ExceptionDemo {
         return fileName.toUpperCase()
     }
 
+    /**
+     * Groovy 方法抛出运行时异常
+     * @param num
+     * @return
+     */
     static int test2 (def num) {
         if( num == null ) {
             // 类似地, 直接抛出RuntimeException
