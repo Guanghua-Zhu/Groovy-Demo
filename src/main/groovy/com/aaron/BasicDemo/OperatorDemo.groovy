@@ -8,7 +8,6 @@ import java.util.stream.Collectors
 /**
  * Groovy 操作符示例
  */
-// Aaron: todo: output 2 blog
 class OperatorDemo {
 
     static void main(String[] args){
