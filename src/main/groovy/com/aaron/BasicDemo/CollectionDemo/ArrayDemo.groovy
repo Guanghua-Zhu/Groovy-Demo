@@ -3,9 +3,8 @@ package com.aaron.BasicDemo.CollectionDemo
 /**
  * Groovy Array 示例
  */
-// Aaron: todo: output 2 blog
 class ArrayDemo {
-    static void main() {
+    static void main(args)  {
         // 通过显式变量类型声明字符串数组
         String[] array1 = ['Aaron','Tom']
         assert array1.size() == 2
@@ -27,5 +26,10 @@ class ArrayDemo {
         // 支持Java风格的数组初始化
         def array3 = new int[] {110, 119, 120, 114}
         assert array3[2] == 120
+
+        // 支持Java风格的数组创建
+        def array4 = new int[4]
+        array4[2] = 996
+        assert array4 == [0, 0, 996, 0]
     }
 }

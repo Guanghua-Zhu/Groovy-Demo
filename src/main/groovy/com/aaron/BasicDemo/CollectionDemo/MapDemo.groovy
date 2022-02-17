@@ -3,10 +3,9 @@ package com.aaron.BasicDemo.CollectionDemo
 /**
  * Groovy Map 示例
  */
-// Aaron: todo: output 2 blog
 class MapDemo {
     static void main(String[] args) {
-        basic()
+        //basic()
         testType()
     }
 
@@ -33,13 +32,13 @@ class MapDemo {
         // 迭代Map中的条目按闭包进行计算，并将结果保存到列表中
         def list1 = map1.collect{ entry -> entry.value+1000 }
         assert list1 instanceof List
-        println("list1: $list1")
+        assert list1 == [1002, 1001, 1035, 1996, 1007]
 
         def list2 = []
         // 将结果保存到给定的List中
         map1.collect(list2) { entry -> entry.value+2000}
-        assert list1 instanceof List
-        println("list2: $list2")
+        assert list2 instanceof List
+        assert list2 == [2002, 2001, 2035, 2996, 2007]
 
         // Map中每一个KV对是否均满足闭包条件
         assert map1.every {entry -> entry.value>0}
@@ -50,11 +49,11 @@ class MapDemo {
         def map5 = ["Bob":3, "Aaron":18, "Tom": 23]
         // 查找任一一个满足闭包条件的条目
         def entry1 =  map5.find { entry -> entry.value>5 }
-        // 占位符完整语法为 ${}, 在不引起歧义的情况下可以直接使用 $
-        println ("result 1: $entry1.key --->>> ${entry1.value}")
+        assert entry1.toString() == "Aaron=18"
+
         // 查找所有满足闭包条件的条目
         def resutMap =  map5.findAll { entry -> entry.value>5 }
-        println ("resutMap : $resutMap")
+        assert resutMap == [Aaron:18, Tom:23]
     }
 
     static void testType() {

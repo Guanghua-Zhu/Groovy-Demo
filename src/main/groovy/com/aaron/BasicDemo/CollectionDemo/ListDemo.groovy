@@ -3,7 +3,6 @@ package com.aaron.BasicDemo.CollectionDemo
 /**
  * Groovy 列表 示例
  */
-// Aaron: todo: output 2 blog
 class ListDemo {
     static void main(args) {
         basic()
@@ -134,10 +133,11 @@ class ListDemo {
 
         // 通过Set实现列表去重
         def list4 = new HashSet(list3).toList()
-        println( "list4 : $list4" )
+        assert list3 == [1,22,13,24,15,15,3,9,22]
+        assert list4 == [1, 3, 22, 24, 9, 13, 15]
         // 去重同时保留顺序
         def list5 = list3.unique()
-        println( "list5 : $list5" )
+        assert list5 == [1, 22, 13, 24, 15, 3, 9]
 
         // 正向遍历
         def list6 = ["Aaron","Tina","Bob"]
