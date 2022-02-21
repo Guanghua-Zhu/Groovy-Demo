@@ -5,7 +5,6 @@ import org.codehaus.groovy.runtime.MethodClosure
 /**
  * Groovy 闭包 示例
  */
-// Aaron: todo: output 2 blog
 class ClosureDemo {
     static void main(String[] args) {
         define()
@@ -19,13 +18,13 @@ class ClosureDemo {
      * 闭包声明定义
      * @param args
      */
-    static void define(String[] args) {
+    static void define() {
         def range1 = 1..2
         println("\n----------------- Test 1 -----------------")
         range1.each { it -> println("Test 1: $it") }
 
         println("\n----------------- Test 2 -----------------")
-        // 如果闭包没有通过->显式声明参数列表, Groovy会默认提供了一个名为it的缺省参数
+        // 如果闭包没有通过->显式声明参数列表, Groovy会默认提供一个名为it的缺省参数
         range1.each { println("Test 2: $it") }
 
         println("\n----------------- Test 3 -----------------")
