@@ -1,30 +1,33 @@
 package com.aaron.AnnotationDemo
 
 import groovy.transform.Canonical
+import groovy.transform.TupleConstructor
 import groovy.transform.builder.Builder
 
 /**
  * Groovy 生成代码注解 示例
  */
-// Aaron: todo: output 2 blog
 class GenerateDemo {
     static void main(String[] args) {
-        test1()
-        test2()
-        test3()
+        testConstructor()
+        testOther()
+        testSingleton()
     }
 
-    static void test1() {
+    static void testConstructor() {
         // 使用无参构造器
         Pc pc1 = new Pc()
+
         // 使用位置参数构造器
         Pc pc2 = new Pc("Dell")
         Pc pc3 = new Pc("Dell", 3)
         Pc pc4 = new Pc("Dell", 3, 1999d)
+
         // 使用命名参数构造器
         Pc pc5 = new Pc(brand: "HP")
         Pc pc6 = new Pc(num:5, price: 288.99d)
 
+        // 使用链式调用的构造器
         Pc pc7 = Pc.builder()
             .price(5999)
             .brand("ThinkPad")
@@ -32,13 +35,14 @@ class GenerateDemo {
             .build();
     }
 
-    static void test2() {
+    static void testOther() {
         Pc pc1 = new Pc("Dell",2,200)
         Pc pc2 = new Pc("Dell",2,200)
 
-        // 二者引用的对象地址不一样
+        // 对象地址不一样
         assert pc1 !== pc2
-
+        // 对象的HashCode一样
+        assert pc1.hashCode() == pc2.hashCode()
         // 二者的内容一样
         assert pc1 == pc2
         assert pc1.equals(pc2)
@@ -46,7 +50,7 @@ class GenerateDemo {
         assert pc1.toString() == "com.aaron.AnnotationDemo.Pc(Dell, 2, 200.0)"
     }
 
-    static void test3() {
+    static void testSingleton() {
         // 通过instance属性获取单例对象
         RedisClient redisClient1 = RedisClient.instance
         RedisClient redisClient2 = RedisClient.instance
@@ -69,24 +73,6 @@ class Pc {
     Integer num;
 
     Double price;
-
-    /**
-     * 重载加法运算符 +
-     * @param other
-     * @return
-     */
-//    Pc plus(Pc other) {
-//        if( !other || !other.brand || !this.brand
-//            || this.brand!=other.brand )  {
-//            throw new IllegalArgumentException("参数校验失败")
-//        }
-//
-//        int num1 = this.num ?: 0
-//        int num2 = other.num ?: 0
-//        int resultNum = num1+num2
-//
-//        return new Pc()
-//    }
 }
 
 // 单例模式, lazy属性设置是否为惰性
