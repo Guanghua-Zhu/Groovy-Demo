@@ -3,7 +3,6 @@ package com.aaron.BasicDemo.ClosureDemo
 /**
  * Groovy 闭包 示例: 闭包中的delegate
  */
-// Aaron: todo: output 2 blog
 class DelegateInClosure {
     static void main(String[] args){
         basic()

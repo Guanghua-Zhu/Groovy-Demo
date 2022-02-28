@@ -1,10 +1,8 @@
 package com.aaron.BasicDemo.ClosureDemo
 
-
 /**
  * Groovy 闭包 示例: 闭包中的this
  */
-// Aaron: todo: output 2 blog
 class ThisInClosure {
     static void main(String[] args) {
         Employee employee = new Employee("Aaron", 18)
