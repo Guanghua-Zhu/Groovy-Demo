@@ -3,7 +3,6 @@ package com.aaron.FPDemo
 /**
  * Groovy 闭包记忆化 示例
  */
-// Aaron: todo: output 2 blog
 class MemoizationDemo {
     static void main(String[] args) {
         test1()

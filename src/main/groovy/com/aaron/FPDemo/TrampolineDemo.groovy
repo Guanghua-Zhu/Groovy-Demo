@@ -3,7 +3,6 @@ package com.aaron.FPDemo
 /**
  * Groovy 蹦床 示例
  */
-// Aaron: todo: output 2 blog
 class TrampolineDemo {
 
     static void main(String[] args) {
@@ -24,8 +23,7 @@ class TrampolineDemo {
             return fact1(n-1) * n
         }
 
-        assert fact1(8) == 40320
-
+        // 递归过深导致栈溢出SOF
         fact1(2000)
     }
 
@@ -41,8 +39,7 @@ class TrampolineDemo {
             return fact2(n-1, result*n)
         }
 
-        assert fact2(8) == 40320
-
+        // 递归过深导致栈溢出SOF
         fact2(2000)
     }
 
@@ -60,7 +57,6 @@ class TrampolineDemo {
             return fact3.trampoline(n-1, result*n)
         }.trampoline()  // 通过trampoline方法将闭包包装为TrampolineClosure
 
-        assert fact3(8) == 40320
 
         fact3(2000)
         println "No Happen Stack Overflow Error"
