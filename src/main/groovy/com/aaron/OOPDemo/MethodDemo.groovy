@@ -3,7 +3,6 @@ package com.aaron.OOPDemo
 /**
  * Groovy 类的示例: 方法
  */
-// Aaron: todo: output 2 blog
 class MethodDemo {
     static void main(String[] args) {
         assert Calc.getInfo1() == true

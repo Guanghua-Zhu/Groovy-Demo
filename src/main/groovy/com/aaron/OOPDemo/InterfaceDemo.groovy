@@ -3,7 +3,6 @@ package com.aaron.OOPDemo
 /**
  * Groovy 接口的示例
  */
-// Aaron: todo: output 2 blog
 class InterfaceDemo {
     static void main(String[] args){
         Speak dog = new Dog()

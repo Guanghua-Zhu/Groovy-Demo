@@ -4,9 +4,8 @@ import groovy.test.AllTestSuite
 import junit.textui.TestRunner
 
 // Groovy 测试套件示例2
-// Aaron: todo: output 2 blog
 
-// 单元测试类的路径匹配表达式
+// 单元测试类的路径匹配表达式, .表示当前路径
 String basedir = "."
 // 单元测试类的文件名匹配表达式
 String pattern = "*Test.groovy"

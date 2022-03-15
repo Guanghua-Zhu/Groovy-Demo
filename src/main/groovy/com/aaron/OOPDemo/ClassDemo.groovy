@@ -3,7 +3,6 @@ package com.aaron.OOPDemo
 /**
  * Groovy 类的示例: 字段/属性的访问/修改, 对象的实例化
  */
-// Aaron: todo: output 2 blog
 class ClassDemo {
     static void main(String[] args) {
         /*************** 基于Positional Parameters位置参数 ***************/
